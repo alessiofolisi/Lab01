@@ -12,6 +12,10 @@ public class Parole {
 	public Parole() {
 	}
 	
+	public void removeParola(String p) {
+		elencoParole.remove(p);
+	}
+	
 	public void addParola(String p) {
 		elencoParole.add(p);
 	}

@@ -18,6 +18,9 @@ public class FXMLController {
 	Parole elenco ;
 
     @FXML
+    private Button buttonCancel;
+    
+    @FXML
     private ResourceBundle resources;
 
     @FXML
@@ -28,6 +31,9 @@ public class FXMLController {
 
     @FXML
     private Button btnInserisci;
+    
+    @FXML
+    private TextArea txtEsecuzione;
 
     @FXML
     private TextArea txtResult;
@@ -47,6 +53,8 @@ public class FXMLController {
     	
     	txtResult.setText(s);
     	txtParola.clear();
+   
+    	txtEsecuzione.appendText(Long.toString(System.nanoTime()) + " nano secondi\n");
     		
     }
 
@@ -55,6 +63,22 @@ public class FXMLController {
     	elenco.reset();
     	txtResult.clear();
     	
+    	txtEsecuzione.appendText(Long.toString(System.nanoTime()) + " nano secondi\n");
+    }
+    
+    @FXML
+    void doCancel(ActionEvent event) {
+    	
+    	elenco.removeParola(txtResult.getSelectedText());
+    	String s = "";
+    	
+    	for(String ss : elenco.getElenco()) {
+    		s += ss+"\n";
+    	}
+    	
+    	txtResult.setText(s);
+    	
+    	txtEsecuzione.appendText(Long.toString(System.nanoTime()) + " nano secondi\n");
     }
 
     @FXML
